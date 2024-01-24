@@ -105,7 +105,10 @@ mongoose
   })
   .then(() => {
     console.log("📚 connected...");
-    app.listen(PORT, () => console.log(`server is running on port ${PORT}`));
+    app.listen(PORT, () => {
+      console.log(`server is running on port ${PORT}`);
+      // console.log(process.env.SESSION_SECRET, username, password);
+    });
   })
   .catch((err) => console.log(err.message));
 
