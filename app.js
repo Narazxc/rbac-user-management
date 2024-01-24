@@ -9,6 +9,7 @@ const passport = require("passport");
 const MongoStore = require("connect-mongo");
 const connectEnsureLogin = require("connect-ensure-login"); // to redirect user where he/she requested after successfully logged in
 const { roles } = require("./utils/constants");
+const path = require("path");
 
 const username = encodeURIComponent(process.env.DB_USERNAME);
 const password = encodeURIComponent(process.env.DB_PASSWORD);
@@ -22,7 +23,7 @@ app.use(morgan("dev"));
 //setting view engine
 app.set("view engine", "ejs");
 //setting public folder
-app.use(express.static("public"));
+app.use(express.static(path.join(__dirname, "public")));
 //parse incoming request body
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
